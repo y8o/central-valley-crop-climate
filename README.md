@@ -1,2 +1,2 @@
-# central-valley-soil-carbon-gee
+# Soil Organic Carbon Mapping and Climate Correlation Analysis in California's Central Valley
 Interactive mapping of soil organic carbon distribution across 50,000+ agricultural acres in the Central Valley using Google Earth Engine and SoilGrids data. Analyzes relationships between soil carbon levels, precipitation patterns, and temperature gradients to identify optimal zones for carbon sequestration practices.
