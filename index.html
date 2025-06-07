@@ -12,14 +12,14 @@
       height: 100vh;
     }
     .sidebar {
-      width: 45%;
+      width: 50%;
       padding: 30px;
       background-color: #f9f9f9;
       border-right: 1px solid #ccc;
       overflow-y: scroll;
     }
     .content {
-      width: 55%;
+      width: 50%;
       padding: 30px;
       overflow-y: scroll;
     }
@@ -31,10 +31,17 @@
       margin-bottom: 20px;
       border: 1px solid #ccc;
     }
-    pre {
-      background: #eee;
-      padding: 10px;
-      overflow-x: auto;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 8px;
+      text-align: left;
     }
     .footer {
       margin-top: 40px;
@@ -47,42 +54,82 @@
 </head>
 <body>
   <div class="sidebar">
-    <h1>Crop Yield and Climate Trends in California's Central Valley</h1>
+    <h1>Central Valley Crop Yield & Climate Sensitivity</h1>
     <p>
-      This project analyzes crop yield sensitivity to climate stress (temperature and precipitation) across 15 counties in California's Central Valley from 2010 to 2024.
+      This project models crop yield across California's Central Valley counties from 2010 to 2024,
+      using temperature, precipitation, and agricultural data.
     </p>
-    <h2>Key Finding</h2>
-    <p><strong>Corn yield drops by 26% in hot years.</strong> Barley shows an even more extreme 50% decline under temperature stress, while beans and wheat exhibit modest gains.</p>
 
-    <img src="results/hero_central_valley_yield_map.png" alt="Hero Yield Map" />
-    <img src="results/climate_trends/crop_yield_heatmap.png" alt="Yield Change Heatmap" />
+    <h2>Key Findings</h2>
+    <ul>
+      <li>Corn yield decreases by 26% in hot years</li>
+      <li>Barley suffers the largest losses: -50%</li>
+      <li>Beans and wheat improve slightly in hot years</li>
+    </ul>
+
+    <img src="results/central_valley_yield_map.png" alt="Hero Map: Avg Yield by County" />
+    <img src="results/climate_trends/crop_yield_heatmap.png" alt="Heatmap of Crop Sensitivity" />
+    <img src="results/climate_trends/corn_yield_by_climate_band.png" alt="Corn Yield by Climate Band" />
+    <img src="results/climate_trends/corn_yield_trend.png" alt="Corn Yield Over Time" />
   </div>
 
   <div class="content">
     <h2>Data Sources</h2>
     <ul>
-      <li>USDA NASS QuickStats (crop yield, acreage, production)</li>
-      <li>NOAA Climate Data Online (daily temperature and precipitation)</li>
-      <li>Census TIGER/Line county boundaries (GeoJSON)</li>
+      <li>USDA NASS QuickStats (yield, acreage, production)</li>
+      <li>NOAA CDO (daily temperature, precipitation)</li>
+      <li>Census TIGER/Line county boundaries</li>
     </ul>
 
     <h2>Methods</h2>
     <ul>
-      <li>Collected climate data from 15 representative stations using the NOAA API</li>
-      <li>Aggregated daily climate data into annual features (TMAX, TMIN, PRCP)</li>
-      <li>Paired with USDA crop data and trained Random Forest models per crop</li>
-      <li>Analyzed yield changes in hot years (>1 standard deviation above average temperature)</li>
+      <li>Downloaded county-level ag and weather data (2010–2024)</li>
+      <li>Engineered features: mean temp, total precip, area harvested</li>
+      <li>Trained Random Forest models per crop</li>
+      <li>Analyzed yield drop during hot years (temp > +1 std. dev)</li>
     </ul>
 
-    <h2>Visual Outputs</h2>
-    <ul>
-      <li>Per-crop yield models and feature importance plots</li>
-      <li>County-level maps showing hot-year impact on yield</li>
-      <li>Heatmap comparing climate sensitivity across crops</li>
-    </ul>
+    <h2>Model Results Summary</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Crop</th>
+          <th>R²</th>
+          <th>MAE</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Corn</td><td>0.675</td><td>28.43</td><td>Good correlation with precipitation</td></tr>
+        <tr><td>Beans</td><td>0.614</td><td>292.16</td><td>Strong yield recovery in heat</td></tr>
+        <tr><td>Wheat</td><td>0.269</td><td>14.69</td><td>Moderate climate sensitivity</td></tr>
+        <tr><td>Cotton</td><td>0.165</td><td>167.81</td><td>Low signal-to-noise ratio</td></tr>
+        <tr><td>Tomatoes</td><td>-0.063</td><td>4.74</td><td>Yield fairly stable</td></tr>
+        <tr><td>Rice</td><td>-1.05</td><td>540.84</td><td>Unpredictable climate relationship</td></tr>
+        <tr><td>Barley</td><td>-0.29</td><td>8.50</td><td>Severe heat sensitivity</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Yield Impact from Hot Years</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Crop</th><th>Normal</th><th>Hot</th><th>Change</th><th>% Change</th><th>Hot Years</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Corn</td><td>76.85</td><td>56.62</td><td>-20.23</td><td>-26.32%</td><td>15</td></tr>
+        <tr><td>Barley</td><td>72.2</td><td>36.0</td><td>-36.2</td><td>-50.14%</td><td>2</td></tr>
+        <tr><td>Beans</td><td>2411.72</td><td>2730.0</td><td>+318.28</td><td>+13.2%</td><td>3</td></tr>
+        <tr><td>Wheat</td><td>78.41</td><td>87.85</td><td>+9.44</td><td>+12.04%</td><td>11</td></tr>
+        <tr><td>Tomatoes</td><td>48.37</td><td>51.16</td><td>+2.79</td><td>+5.77%</td><td>17</td></tr>
+        <tr><td>Cotton</td><td>1584.8</td><td>1535.64</td><td>-49.16</td><td>-3.1%</td><td>7</td></tr>
+        <tr><td>Rice</td><td>8529.35</td><td>8582.86</td><td>+53.51</td><td>+0.63%</td><td>7</td></tr>
+      </tbody>
+    </table>
 
     <div class="footer">
-      <p><a href="https://github.com/y8o/central-valley-crop-climate">View the full project on GitHub</a></p>
+      <p><a href="https://github.com/y8o/central-valley-crop-climate">View Full Project on GitHub</a></p>
     </div>
   </div>
 </body>
