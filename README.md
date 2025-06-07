@@ -86,15 +86,14 @@ The goal is to quantify:
 ## Repository Structure
 project-root/
 ├── data/
-│ ├── raw/ # USDA & NOAA raw data
-│ ├── processed/ # Final features and merged files
-│ │ ├── by_crop/ # One file per crop
+│   ├── raw/ # USDA & NOAA raw data
+│   └── processed/ # Final features and merged files
+│       └── by_crop/ # One file per crop
 ├── results/
-│ ├── yield_models/ # Per-crop model metrics & plots
-│ ├── climate_trends/ # Hot year impact plots and tables
+│   ├── yield_models/ # Per-crop model metrics & plots
+│   └── climate_trends/ # Hot year impact plots and tables
 ├── src/ # All scripts
-├── README.md
----
+└── README.md
 
 ## Reproducibility
 
