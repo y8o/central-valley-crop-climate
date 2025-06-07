@@ -84,6 +84,8 @@ The goal is to quantify:
 ---
 
 ## Repository Structure
+
+```
 project-root/
 ├── data/
 │   ├── raw/ # USDA & NOAA raw data
