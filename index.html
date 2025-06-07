@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Central Valley Climate & Crop Yield Analysis</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 45%;
+      padding: 30px;
+      background-color: #f9f9f9;
+      border-right: 1px solid #ccc;
+      overflow-y: scroll;
+    }
+    .content {
+      width: 55%;
+      padding: 30px;
+      overflow-y: scroll;
+    }
+    h1, h2 {
+      margin-top: 0;
+    }
+    img {
+      max-width: 100%;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+    }
+    pre {
+      background: #eee;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .footer {
+      margin-top: 40px;
+      font-size: 14px;
+    }
+    .footer a {
+      color: #007acc;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h1>Crop Yield and Climate Trends in California's Central Valley</h1>
+    <p>
+      This project analyzes crop yield sensitivity to climate stress (temperature and precipitation) across 15 counties in California's Central Valley from 2010 to 2024.
+    </p>
+    <h2>Key Finding</h2>
+    <p><strong>Corn yield drops by 26% in hot years.</strong> Barley shows an even more extreme 50% decline under temperature stress, while beans and wheat exhibit modest gains.</p>
+
+    <img src="results/hero_central_valley_yield_map.png" alt="Hero Yield Map" />
+    <img src="results/climate_trends/crop_yield_heatmap.png" alt="Yield Change Heatmap" />
+  </div>
+
+  <div class="content">
+    <h2>Data Sources</h2>
+    <ul>
+      <li>USDA NASS QuickStats (crop yield, acreage, production)</li>
+      <li>NOAA Climate Data Online (daily temperature and precipitation)</li>
+      <li>Census TIGER/Line county boundaries (GeoJSON)</li>
+    </ul>
+
+    <h2>Methods</h2>
+    <ul>
+      <li>Collected climate data from 15 representative stations using the NOAA API</li>
+      <li>Aggregated daily climate data into annual features (TMAX, TMIN, PRCP)</li>
+      <li>Paired with USDA crop data and trained Random Forest models per crop</li>
+      <li>Analyzed yield changes in hot years (>1 standard deviation above average temperature)</li>
+    </ul>
+
+    <h2>Visual Outputs</h2>
+    <ul>
+      <li>Per-crop yield models and feature importance plots</li>
+      <li>County-level maps showing hot-year impact on yield</li>
+      <li>Heatmap comparing climate sensitivity across crops</li>
+    </ul>
+
+    <div class="footer">
+      <p><a href="https://github.com/y8o/central-valley-crop-climate">View the full project on GitHub</a></p>
+    </div>
+  </div>
+</body>
+</html>

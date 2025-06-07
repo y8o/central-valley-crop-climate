@@ -1,0 +1,4 @@
+R²: 0.1651
+MAE: 167.8150
+Rows: 69
+Features used: prcp_total, tmax_mean, tmin_mean, activegins, areaharvested, areaplanted, ginnedbales, production

@@ -1,0 +1,4 @@
+R²: 0.6139
+MAE: 292.1625
+Rows: 39
+Features used: prcp_total, tmax_mean, tmin_mean, areaharvested, areaplanted, production
