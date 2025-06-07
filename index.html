@@ -55,11 +55,20 @@
 <body>
   <div class="sidebar">
     <h1>Central Valley Crop Yield & Climate Sensitivity</h1>
-    <p>
-      This project models crop yield across California's Central Valley counties from 2010 to 2024,
-      using temperature, precipitation, and agricultural data.
-    </p>
+    <img src="results/entral_valley_yield_map.png" alt="Map: Avg Yield by County" />
+    <p>Map of average crop yields (2010–2024) by county across California's Central Valley.</p>
 
+    <img src="results/climate_trends/crop_yield_heatmap.png" alt="Heatmap of Crop Sensitivity" />
+    <p>Heatmap showing yield changes in hot years across crops.</p>
+
+    <img src="results/climate_trends/corn_yield_by_climate_band.png" alt="Corn Yield by Climate Band" />
+    <p>Boxplot of corn yield in hot vs. normal years.</p>
+
+    <img src="results/climate_trends/corn_yield_trend.png" alt="Corn Yield Over Time" />
+    <p>Corn yield trend from 2010–2024.</p>
+  </div>
+
+  <div class="content">
     <h2>Key Findings</h2>
     <ul>
       <li>Corn yield decreases by 26% in hot years</li>
@@ -67,13 +76,9 @@
       <li>Beans and wheat improve slightly in hot years</li>
     </ul>
 
-    <img src="results/central_valley_yield_map.png" alt="Hero Map: Avg Yield by County" />
-    <img src="results/climate_trends/crop_yield_heatmap.png" alt="Heatmap of Crop Sensitivity" />
-    <img src="results/climate_trends/corn_yield_by_climate_band.png" alt="Corn Yield by Climate Band" />
-    <img src="results/climate_trends/corn_yield_trend.png" alt="Corn Yield Over Time" />
-  </div>
+    <h2>Project Summary</h2>
+    <p>This project combines climate data and agricultural records to model crop yield variation across 15 Central Valley counties from 2010 to 2024. We analyze how precipitation and temperature trends influence yield outcomes, especially in hot years. The project uses USDA and NOAA data to train crop-specific models and visualize climate sensitivity.</p>
 
-  <div class="content">
     <h2>Data Sources</h2>
     <ul>
       <li>USDA NASS QuickStats (yield, acreage, production)</li>
