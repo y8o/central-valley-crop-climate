@@ -96,6 +96,7 @@ project-root/
 │   └── climate_trends/ # Hot year impact plots and tables
 ├── src/ # All scripts
 └── README.md
+```
 
 ## Reproducibility
 
